@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Masking Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header data-aos="fade-down" data-aos-duration="800">
+            <div class="logo-wrapper">
+                <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="80" height="80" rx="20" stroke="#667eea" stroke-width="4" />
+                    <path d="M35 35 L65 35 L65 45 L35 45 L35 35Z" fill="#667eea" />
+                    <path d="M35 55 L50 55 L50 65 L35 65 L35 55Z" fill="#667eea" />
+                    <path d="M35 45 L55 45 L55 55 L35 55 L35 45Z" fill="#764ba2" opacity="0.6" />
+                    <circle cx="70" cy="70" r="8" stroke="#667eea" stroke-width="3" />
+                    <path d="M70 62 L70 70 L76 76" stroke="#667eea" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                <h1>URL Masker</h1>
+            </div>
+            <p class="tagline">mask · obfuscate · redirect</p>
+        </header>
+
+        <div class="warning-banner" data-aos="fade-right" data-aos-delay="200">
+            <i class="fas fa-triangle-exclamation"></i>
+            <span>Use at your own risk. This tool is for educational purposes only. Phishing is illegal.</span>
+        </div>
+
+        <div class="main-form" data-aos="fade-up" data-aos-delay="300">
+            <div class="form-group">
+                <label><i class="fas fa-link"></i> Original URL</label>
+                <input type="url" id="origUrl" placeholder="https://example.com/page" value="https://example.com/page" />
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-globe"></i> Custom Domain</label>
+                <input type="text" id="customDomain" placeholder="facebook.com" value="facebook.com" />
+                <small class="hint">Domain that appears in address bar</small>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-tag"></i> Keyword</label>
+                <input type="text" id="keyword" placeholder="login" value="login" />
+                <small class="hint">e.g., login, secure, verify, auth</small>
+            </div>
+
+            <div class="form-group">
+                <div class="toggle-wrapper">
+                    <label class="toggle-label">
+                        <i class="fas fa-random"></i> Add Random String
+                    </label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="addRandom" checked />
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <small class="hint">Appends random characters after keyword</small>
+            </div>
+
+            <div class="form-group" id="randomLengthGroup">
+                <label><i class="fas fa-ruler"></i> Random Length</label>
+                <input type="number" id="randomLength" value="8" min="4" max="30" />
+                <small class="hint">Length of random string (4-30)</small>
+            </div>
+
+            <div class="form-group">
+                <div class="toggle-wrapper">
+                    <label class="toggle-label">
+                        <i class="fas fa-lock"></i> Force HTTPS
+                    </label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="forceHttps" checked />
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <small class="hint">Generate only HTTPS masked URLs</small>
+            </div>
+
+            <div class="preview-box" data-aos="fade-in" data-aos-delay="400">
+                <label><i class="fas fa-eye"></i> Preview</label>
+                <div id="previewUrl">https://facebook.com-login@example.com/page</div>
+            </div>
+
+            <button class="btn-generate" onclick="genMask()">
+                <i class="fas fa-mask"></i> Generate Masked URLs
+            </button>
+        </div>
+
+        <div class="results" id="resultsContainer">
+            <h3><i class="fas fa-list"></i> Generated URLs</h3>
+            <div id="resultsList"></div>
+            <div class="stats">
+                <span id="urlCount">0 URLs generated</span>
+                <span class="badge"><i class="fas fa-bolt"></i> Static</span>
+            </div>
+        </div>
+
+        <footer data-aos="fade-up" data-aos-delay="600">
+            <div class="social-links">
+                <a href="https://github.com/samsharya" target="_blank">
+                    <i class="fab fa-github"></i> samsharya
+                </a>
+                <a href="https://instagram.com/samsharyagaire" target="_blank">
+                    <i class="fab fa-instagram"></i> samsharyagaire
+                </a>
+            </div>
+            <p class="footer-text"> -> <i class="fas fa-heart" style="color:#ef4444;"></i> · Samsharya Gaire</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
